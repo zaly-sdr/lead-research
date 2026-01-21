@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-// A beautiful single testimonial with a user name and and company logo logo
+// Un hermoso testimonio individual con nombre de usuario y logo de empresa
 const Testimonial = () => {
   return (
     <section
@@ -17,19 +17,19 @@ const Testimonial = () => {
                 width={320}
                 height={320}
                 className="rounded-lg max-w-[320px] md:max-w-[280px] lg:max-w-[320px] object-center border-2 border-white/10 shadow-md"
-                // Ideally, load from a statically generated image for better SEO performance (import userImage from "@/public/userImage.png")
-                // If you're using a static image, add placeholder="blur"
+                // Idealmente, carga desde una imagen generada estaticamente para mejor rendimiento SEO (import userImage from "@/public/userImage.png")
+                // Si usas una imagen estatica, agrega placeholder="blur"
                 src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2488&q=80"
-                alt="A testimonial from a happy customer"
+                alt="Un testimonio de un cliente feliz"
               />
             </div>
 
             <div>
               <blockquote className="text-xl font-medium leading-8 text-base-content sm:text-2xl sm:leading-10">
-                I got your boilerplate and having the payments setup with Stripe
-                + user auth is a blessing. This will save me like a week of work
-                for each new side project I spin up. I appreciate that is well
-                documented, as well. 100% worth it!
+                Obtuve tu boilerplate y tener los pagos configurados con Stripe
+                + autenticacion de usuario es una bendicion. Esto me ahorrara como una semana de trabajo
+                por cada nuevo proyecto que inicie. Aprecio que este bien
+                documentado tambien. 100% vale la pena!
               </blockquote>
               <figcaption className="mt-10 flex items-center justify-start gap-5">
                 <div className="text-base">
@@ -37,7 +37,7 @@ const Testimonial = () => {
                     Amanda Lou
                   </div>
                   <div className="text-base-content/60">
-                    Indie Maker &amp; Developer
+                    Indie Maker y Desarrolladora
                   </div>
                 </div>
 
@@ -45,9 +45,9 @@ const Testimonial = () => {
                   width={150}
                   height={50}
                   className="w-20 md:w-24"
-                  // Ideally, load from a statically generated image for better SEO performance (import userImage from "@/public/userImage.png")
+                  // Idealmente, carga desde una imagen generada estaticamente para mejor rendimiento SEO (import userImage from "@/public/userImage.png")
                   src="https://logos-world.net/wp-content/uploads/2020/10/Reddit-Logo.png"
-                  alt="Reddit logo"
+                  alt="Logo de Reddit"
                 />
               </figcaption>
             </div>

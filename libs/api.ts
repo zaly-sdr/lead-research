@@ -3,8 +3,7 @@ import { toast } from "react-hot-toast";
 import { redirect } from "next/navigation";
 import config from "@/config";
 
-// use this to interact with our own API (/app/api folder) from the front-end side
-// See https://shipfa.st/docs/tutorials/api-call
+// Usa esto para interactuar con nuestra propia API (carpeta /app/api) desde el lado del front-end
 const apiClient = axios.create({
   baseURL: "/api",
 });
@@ -17,13 +16,13 @@ apiClient.interceptors.response.use(
     let message = "";
 
     if (error.response?.status === 401) {
-      // User not auth, ask to re login
-      toast.error("Please login");
-      // Sends the user to the login page
+      // Usuario no autenticado, pedir que vuelva a iniciar sesion
+      toast.error("Por favor inicia sesion");
+      // Envia al usuario a la pagina de login
       redirect(config.auth.loginUrl);
     } else if (error.response?.status === 403) {
-      // User not authorized, must subscribe/purchase/pick a plan
-      message = "Pick a plan to use this feature";
+      // Usuario no autorizado, debe suscribirse/comprar/elegir un plan
+      message = "Elige un plan para usar esta funcion";
     } else {
       message =
         error?.response?.data?.error || error.message || error.toString();
@@ -34,11 +33,11 @@ apiClient.interceptors.response.use(
 
     console.error(error.message);
 
-    // Automatically display errors to the user
+    // Mostrar errores automaticamente al usuario
     if (error.message) {
       toast.error(error.message);
     } else {
-      toast.error("something went wrong...");
+      toast.error("Algo salio mal...");
     }
     return Promise.reject(error);
   }

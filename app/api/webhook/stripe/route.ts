@@ -11,10 +11,9 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 });
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-// This is where we receive Stripe webhook events
-// It used to update the user data, send emails, etc...
-// By default, it'll store the user in the database
-// See more: https://shipfa.st/docs/features/payments
+// Aqui es donde recibimos los eventos webhook de Stripe
+// Se usa para actualizar los datos del usuario, enviar emails, etc.
+// Por defecto, almacena al usuario en la base de datos
 export async function POST(req: NextRequest) {
   const body = await req.text();
 
@@ -24,17 +23,17 @@ export async function POST(req: NextRequest) {
   let eventType;
   let event;
 
-  // Create a private supabase client using the secret service_role API key
+  // Crear un cliente de Supabase privado usando la clave API secreta service_role
   const supabase = new SupabaseClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.SUPABASE_SERVICE_ROLE_KEY
   );
 
-  // verify Stripe event is legit
+  // Verificar que el evento de Stripe sea legitimo
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err) {
-    console.error(`Webhook signature verification failed. ${err.message}`);
+    console.error(`La verificacion de firma del webhook fallo. ${err.message}`);
     return NextResponse.json({ error: err.message }, { status: 400 });
   }
 
@@ -43,8 +42,8 @@ export async function POST(req: NextRequest) {
   try {
     switch (eventType) {
       case "checkout.session.completed": {
-        // First payment is successful and a subscription is created (if mode was set to "subscription" in ButtonCheckout)
-        // ✅ Grant access to the product
+        // El primer pago fue exitoso y se creo una suscripcion (si el modo estaba configurado como "subscription" en ButtonCheckout)
+        // ✅ Conceder acceso al producto
         const stripeObject: Stripe.Checkout.Session = event.data
           .object as Stripe.Checkout.Session;
 
@@ -63,7 +62,7 @@ export async function POST(req: NextRequest) {
 
         let user;
         if (!userId) {
-          // check if user already exists
+          // Verificar si el usuario ya existe
           const { data: profile } = await supabase
             .from("profiles")
             .select("*")
@@ -72,7 +71,7 @@ export async function POST(req: NextRequest) {
           if (profile) {
             user = profile;
           } else {
-            // create a new user using supabase auth admin
+            // Crear un nuevo usuario usando supabase auth admin
             const { data } = await supabase.auth.admin.createUser({
               email: customer.email,
             });
@@ -80,7 +79,7 @@ export async function POST(req: NextRequest) {
             user = data?.user;
           }
         } else {
-          // find user by ID
+          // Buscar usuario por ID
           const { data: profile } = await supabase
             .from("profiles")
             .select("*")
@@ -99,32 +98,32 @@ export async function POST(req: NextRequest) {
           })
           .eq("id", user?.id);
 
-        // Extra: send email with user link, product page, etc...
+        // Extra: enviar email con enlace del usuario, pagina del producto, etc.
         // try {
         //   await sendEmail(...);
         // } catch (e) {
-        //   console.error("Email issue:" + e?.message);
+        //   console.error("Problema con email:" + e?.message);
         // }
 
         break;
       }
 
       case "checkout.session.expired": {
-        // User didn't complete the transaction
-        // You don't need to do anything here, by you can send an email to the user to remind him to complete the transaction, for instance
+        // El usuario no completo la transaccion
+        // No necesitas hacer nada aqui, pero puedes enviar un email al usuario para recordarle completar la transaccion, por ejemplo
         break;
       }
 
       case "customer.subscription.updated": {
-        // The customer might have changed the plan (higher or lower plan, cancel soon etc...)
-        // You don't need to do anything here, because Stripe will let us know when the subscription is canceled for good (at the end of the billing cycle) in the "customer.subscription.deleted" event
-        // You can update the user data to show a "Cancel soon" badge for instance
+        // El cliente podria haber cambiado el plan (plan superior o inferior, cancelar pronto, etc.)
+        // No necesitas hacer nada aqui, porque Stripe nos avisara cuando la suscripcion se cancele definitivamente (al final del ciclo de facturacion) en el evento "customer.subscription.deleted"
+        // Puedes actualizar los datos del usuario para mostrar una insignia "Se cancelara pronto" por ejemplo
         break;
       }
 
       case "customer.subscription.deleted": {
-        // The customer subscription stopped
-        // ❌ Revoke access to the product
+        // La suscripcion del cliente se detuvo
+        // ❌ Revocar acceso al producto
         const stripeObject: Stripe.Subscription = event.data
           .object as Stripe.Subscription;
         const subscription = await stripe.subscriptions.retrieve(
@@ -139,24 +138,24 @@ export async function POST(req: NextRequest) {
       }
 
       case "invoice.paid": {
-        // Customer just paid an invoice (for instance, a recurring payment for a subscription)
-        // ✅ Grant access to the product
+        // El cliente acaba de pagar una factura (por ejemplo, un pago recurrente de una suscripcion)
+        // ✅ Conceder acceso al producto
         const stripeObject: Stripe.Invoice = event.data
           .object as Stripe.Invoice;
         const priceId = stripeObject.lines.data[0].price.id;
         const customerId = stripeObject.customer;
 
-        // Find profile where customer_id equals the customerId (in table called 'profiles')
+        // Buscar perfil donde customer_id sea igual a customerId (en la tabla llamada 'profiles')
         const { data: profile } = await supabase
           .from("profiles")
           .select("*")
           .eq("customer_id", customerId)
           .single();
 
-        // Make sure the invoice is for the same plan (priceId) the user subscribed to
+        // Asegurarse de que la factura sea del mismo plan (priceId) al que el usuario se suscribio
         if (profile.price_id !== priceId) break;
 
-        // Grant the profile access to your product. It's a boolean in the database, but could be a number of credits, etc...
+        // Conceder al perfil acceso a tu producto. Es un booleano en la base de datos, pero podria ser un numero de creditos, etc.
         await supabase
           .from("profiles")
           .update({ has_access: true })
@@ -166,19 +165,19 @@ export async function POST(req: NextRequest) {
       }
 
       case "invoice.payment_failed":
-        // A payment failed (for instance the customer does not have a valid payment method)
-        // ❌ Revoke access to the product
-        // ⏳ OR wait for the customer to pay (more friendly):
-        //      - Stripe will automatically email the customer (Smart Retries)
-        //      - We will receive a "customer.subscription.deleted" when all retries were made and the subscription has expired
+        // Un pago fallo (por ejemplo, el cliente no tiene un metodo de pago valido)
+        // ❌ Revocar acceso al producto
+        // ⏳ O esperar a que el cliente pague (mas amigable):
+        //      - Stripe enviara automaticamente un email al cliente (Smart Retries)
+        //      - Recibiremos un "customer.subscription.deleted" cuando se hayan realizado todos los reintentos y la suscripcion haya expirado
 
         break;
 
       default:
-      // Unhandled event type
+      // Tipo de evento no manejado
     }
   } catch (e) {
-    console.error("stripe error: ", e.message);
+    console.error("Error de stripe: ", e.message);
   }
 
   return NextResponse.json({});

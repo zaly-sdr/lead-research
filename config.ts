@@ -1,35 +1,35 @@
 import { ConfigProps } from "./types/config";
 
 const config = {
-  // REQUIRED
-  appName: "ShipFast",
-  // REQUIRED: a short description of your app for SEO tags (can be overwritten)
+  // REQUERIDO
+  appName: "SaveIt",
+  // REQUERIDO: una breve descripcion de tu app para etiquetas SEO (puede sobrescribirse)
   appDescription:
-    "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app.",
-  // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
-  domainName: "shipfa.st",
+    "Guarda todos tus enlaces favoritos en un solo lugar. Artículos, videos, tweets, posts - todo organizado y accesible con un solo clic.",
+  // REQUERIDO (sin https://, sin barra al final, solo el dominio)
+  domainName: "saveit.app",
   crisp: {
-    // Crisp website ID. IF YOU DON'T USE CRISP: just remove this => Then add a support email in this config file (resend.supportEmail) otherwise customer support won't work.
+    // ID del sitio web de Crisp. SI NO USAS CRISP: simplemente elimina esto => Luego agrega un email de soporte en este archivo de configuracion (resend.supportEmail) de lo contrario el soporte al cliente no funcionara.
     id: "",
-    // Hide Crisp by default, except on route "/". Crisp is toggled with <ButtonSupport/>. If you want to show Crisp on every routes, just remove this below
+    // Ocultar Crisp por defecto, excepto en la ruta "/". Crisp se activa con <ButtonSupport/>. Si quieres mostrar Crisp en todas las rutas, simplemente elimina esto
     onlyShowOnRoutes: ["/"],
   },
   stripe: {
-    // Create multiple plans in your Stripe dashboard, then add them here. You can add as many plans as you want, just make sure to add the priceId
+    // Crea multiples planes en tu panel de Stripe, luego agregalos aqui. Puedes agregar tantos planes como quieras, solo asegurate de agregar el priceId
     plans: [
       {
-        // REQUIRED — we use this to find the plan in the webhook (for instance if you want to update the user's credits based on the plan)
+        // REQUERIDO — usamos esto para encontrar el plan en el webhook (por ejemplo, si quieres actualizar los creditos del usuario segun el plan)
         priceId:
           process.env.NODE_ENV === "development"
             ? "price_1Niyy5AxyNprDp7iZIqEyD2h"
             : "price_456",
-        //  REQUIRED - Name of the plan, displayed on the pricing page
+        // REQUERIDO - Nombre del plan, mostrado en la pagina de precios
         name: "Starter",
-        // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
+        // Una descripcion amigable del plan, mostrada en la pagina de precios. Tip: explica por que este plan y no otros
         description: "Perfect for small projects",
-        // The price you want to display, the one user will be charged on Stripe.
+        // El precio que quieres mostrar, el que se cobrara al usuario en Stripe.
         price: 99,
-        // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
+        // Si tienes un precio ancla (ej. $29) que quieres mostrar tachado, ponlo aqui. De lo contrario, dejalo vacio
         priceAnchor: 149,
         features: [
           {
@@ -45,7 +45,7 @@ const config = {
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
             : "price_456",
-        // This plan will look different on the pricing page, it will be highlighted. You can only have one plan with isFeatured: true
+        // Este plan se vera diferente en la pagina de precios, estara destacado. Solo puedes tener un plan con isFeatured: true
         isFeatured: true,
         name: "Advanced",
         description: "You need more power",
@@ -65,30 +65,30 @@ const config = {
     ],
   },
   aws: {
-    // If you use AWS S3/Cloudfront, put values in here
+    // Si usas AWS S3/Cloudfront, pon los valores aqui
     bucket: "bucket-name",
     bucketUrl: `https://bucket-name.s3.amazonaws.com/`,
     cdn: "https://cdn-id.cloudfront.net/",
   },
   resend: {
-    // REQUIRED — Email 'From' field to be used when sending magic login links
-    fromNoReply: `ShipFast <noreply@resend.shipfa.st>`,
-    // REQUIRED — Email 'From' field to be used when sending other emails, like abandoned carts, updates etc..
-    fromAdmin: `Marc at ShipFast <marc@resend.shipfa.st>`,
-    // Email shown to customer if need support. Leave empty if not needed => if empty, set up Crisp above, otherwise you won't be able to offer customer support."
-    supportEmail: "marc.louvion@gmail.com",
+    // REQUERIDO — Campo 'From' del email que se usara al enviar enlaces de inicio de sesion magico
+    fromNoReply: `SaveIt <noreply@saveit.app>`,
+    // REQUERIDO — Campo 'From' del email que se usara al enviar otros correos, como carritos abandonados, actualizaciones, etc.
+    fromAdmin: `SaveIt <admin@saveit.app>`,
+    // Email mostrado al cliente si necesita soporte. Dejalo vacio si no es necesario => si esta vacio, configura Crisp arriba, de lo contrario no podras ofrecer soporte al cliente.
+    supportEmail: "soporte@saveit.app",
   },
   colors: {
-    // REQUIRED — The DaisyUI theme to use (added to the main layout.js). Leave blank for default (light & dark mode). If you any other theme than light/dark, you need to add it in config.tailwind.js in daisyui.themes.
-    theme: "light",
-    // REQUIRED — This color will be reflected on the whole app outside of the document (loading bar, Chrome tabs, etc..). By default it takes the primary color from your DaisyUI theme (make sure to update your the theme name after "data-theme=")
-    // OR you can just do this to use a custom color: main: "#f37055". HEX only.
-    main: "#570df8",
+    // REQUERIDO — El tema de DaisyUI a usar (agregado al layout.js principal). Dejalo en blanco para el predeterminado (modo claro y oscuro). Si usas cualquier otro tema que no sea light/dark, necesitas agregarlo en config.tailwind.js en daisyui.themes.
+    theme: "saveit",
+    // REQUERIDO — Este color se reflejara en toda la app fuera del documento (barra de carga, pestanas de Chrome, etc.). Por defecto toma el color primario de tu tema DaisyUI (asegurate de actualizar el nombre del tema despues de "data-theme=")
+    // O simplemente puedes hacer esto para usar un color personalizado: main: "#f37055". Solo HEX.
+    main: "#10B981",
   },
   auth: {
-    // REQUIRED — the path to log in users. It's use to protect private routes (like /dashboard). It's used in apiClient (/libs/api.js) upon 401 errors from our API
+    // REQUERIDO — la ruta para iniciar sesion de usuarios. Se usa para proteger rutas privadas (como /dashboard). Se usa en apiClient (/libs/api.js) ante errores 401 de nuestra API
     loginUrl: "/signin",
-    // REQUIRED — the path you want to redirect users after successfull login (i.e. /dashboard, /private). This is normally a private page for users to manage their accounts. It's used in apiClient (/libs/api.js) upon 401 errors from our API & in ButtonSignin.js
+    // REQUERIDO — la ruta a la que quieres redirigir a los usuarios despues de un inicio de sesion exitoso (ej. /dashboard, /private). Normalmente es una pagina privada para que los usuarios gestionen sus cuentas. Se usa en apiClient (/libs/api.js) ante errores 401 de nuestra API y en ButtonSignin.js
     callbackUrl: "/dashboard",
   },
 } as ConfigProps;

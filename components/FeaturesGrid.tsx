@@ -3,15 +3,15 @@ import React from "react";
 
 const features = [
   {
-    title: "Collect user feedback",
+    title: "Recolecta feedback de usuarios",
     description:
-      "Use your Insighto's board to let users submit features they want.",
+      "Usa tu tablero para permitir que los usuarios envien las funciones que quieren.",
     styles: "bg-primary text-primary-content",
     demo: (
       <div className="overflow-hidden h-full flex items-stretch">
         <div className="w-full translate-x-12 bg-base-200 rounded-t-box h-full p-6">
           <p className="font-medium uppercase tracking-wide text-base-content/60 text-sm mb-3">
-            Suggest a feature
+            Sugiere una funcion
           </p>
           <div className="relative textarea py-4 h-full mr-12 bg-base-200 group-hover:bg-base-100 group-hover:border-base-content/10 text-base-content">
             <div className="absolute left-4 top-4 group-hover:hidden flex items-center ">
@@ -19,14 +19,14 @@ const features = [
               <span className="w-[2px] h-6 bg-primary animate-pulse"></span>
             </div>
             <div className="opacity-0 group-hover:opacity-100 duration-500">
-              Notifications should be visible only on certain pages.
+              Las notificaciones deberian ser visibles solo en ciertas paginas.
             </div>
             <div className="opacity-0 group-hover:opacity-100 duration-1000 flex items-center gap-0.5">
-              <span>Terms & privacy pages don&apos;t need them</span>
+              <span>Las paginas de terminos y privacidad no las necesitan</span>
               <span className="w-[2px] h-6 bg-primary animate-pulse"></span>
             </div>
             <button className="btn shadow-lg btn-primary absolute right-4 bottom-6 opacity-0 group-hover:opacity-100 duration-1000">
-              Submit
+              Enviar
             </button>
           </div>
         </div>
@@ -34,26 +34,26 @@ const features = [
     ),
   },
   {
-    title: "Prioritize features",
-    description: "Users upvote features they want. You know what to ship next.",
+    title: "Prioriza funciones",
+    description: "Los usuarios votan por las funciones que quieren. Sabes que lanzar despues.",
     styles: "md:col-span-2 bg-base-300 text-base-content",
     demo: (
       <div className="px-6 max-w-[600px] flex flex-col gap-4 overflow-hidden">
         {[
           {
-            text: "Add LemonSqueezy integration to the boilerplate",
-            secondaryText: "Yes, ship this! ✅",
+            text: "Agregar integracion de LemonSqueezy al boilerplate",
+            secondaryText: "Si, lanza esto! ✅",
             votes: 48,
             transition: "group-hover:-mt-36 group-hover:md:-mt-28 duration-500",
           },
           {
-            text: "A new pricing table for metered billing",
-            secondaryText: "Maybe ship this 🤔",
+            text: "Una nueva tabla de precios para facturacion medida",
+            secondaryText: "Quiza lanzar esto 🤔",
             votes: 12,
           },
           {
-            text: "A new UI library for the dashboard",
-            secondaryText: "But don't ship that ❌",
+            text: "Una nueva libreria de UI para el dashboard",
+            secondaryText: "Pero no lances eso ❌",
             votes: 1,
           },
         ].map((feature, i) => (
@@ -92,8 +92,8 @@ const features = [
     ),
   },
   {
-    title: "Your brand, your board",
-    description: "Customize your Insighto board with 7 themes.",
+    title: "Tu marca, tu tablero",
+    description: "Personaliza tu tablero con 7 temas.",
     styles: "md:col-span-2 bg-base-100 text-base-content",
     demo: (
       <div className="flex left-0 w-full h-full pt-0 lg:pt-8 overflow-hidden -mt-4">
@@ -122,13 +122,13 @@ const features = [
           ].map((theme, i) => (
             <div className={theme.css} key={i}>
               <div className="font-medium uppercase tracking-wide text-base-content/60 text-sm mb-3">
-                Trending feedback
+                Feedback popular
               </div>
               <div className="space-y-2">
                 <div className="p-4 bg-base-100 rounded-box flex justify-between">
                   <div>
-                    <p className="font-semibold mb-1">Clickable cards</p>
-                    <p className="opacity-80">Make cards more accessible</p>
+                    <p className="font-semibold mb-1">Tarjetas clicables</p>
+                    <p className="opacity-80">Haz las tarjetas mas accesibles</p>
                   </div>
                   <button
                     className={`px-4 py-2 rounded-box group text-center text-lg duration-150 border border-transparent ${theme.buttonStyles}`}
@@ -152,8 +152,8 @@ const features = [
                 </div>
                 <div className="p-4 bg-base-100 rounded-box flex justify-between ">
                   <div>
-                    <p className="font-semibold mb-1">Bigger images</p>
-                    <p className="opacity-80">Make cards more accessible</p>
+                    <p className="font-semibold mb-1">Imagenes mas grandes</p>
+                    <p className="opacity-80">Haz las tarjetas mas accesibles</p>
                   </div>
                   <button
                     className={`px-4 py-2 rounded-box group text-center text-lg duration-150 border border-transparent ${theme.buttonStyles}`}
@@ -183,15 +183,15 @@ const features = [
     ),
   },
   {
-    title: "Discover new ideas",
-    description: "Users can chat and discuss features.",
+    title: "Descubre nuevas ideas",
+    description: "Los usuarios pueden chatear y discutir funciones.",
     styles: "bg-neutral text-neutral-content",
     demo: (
       <div className="text-neutral-content px-6 space-y-4">
         {[
           {
             id: 1,
-            text: "Can we have a feature to add a custom domain to IndiePage?",
+            text: "Podemos tener una funcion para agregar un dominio personalizado?",
             userImg:
               "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
             userName: "Marc Lou",
@@ -199,7 +199,7 @@ const features = [
           },
           {
             id: 2,
-            text: "I'd definitelly pay for that 🤩",
+            text: "Definitivamente pagaria por eso 🤩",
             userImg:
               "https://pbs.twimg.com/profile_images/1778434561556320256/knBJT1OR_400x400.jpg",
             userName: "Dan K.",
@@ -242,9 +242,9 @@ const FeaturesGrid = () => {
     <section className="flex justify-center items-center w-full bg-base-200/50 text-base-content py-20 lg:py-32">
       <div className="flex flex-col max-w-[82rem] gap-16 md:gap-20 px-4">
         <h2 className="max-w-3xl font-black text-4xl md:text-6xl tracking-[-0.01em]">
-          Ship features <br /> users{" "}
+          Lanza funciones <br /> que los usuarios{" "}
           <span className="underline decoration-dashed underline-offset-8 decoration-base-300">
-            really want
+            realmente quieren
           </span>
         </h2>
         <div className="flex flex-col w-full h-fit gap-4 lg:gap-10 text-text-default max-w-[82rem]">

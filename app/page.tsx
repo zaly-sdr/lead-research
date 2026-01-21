@@ -10,18 +10,14 @@ export default function Page() {
 
       <main>
         <section className="flex flex-col items-center justify-center text-center gap-12 px-8 py-24">
-          <h1 className="text-3xl font-extrabold">Ship Fast ⚡️</h1>
+          <h1 className="text-3xl font-extrabold">IA LAB</h1>
 
           <p className="text-lg opacity-80">
-            The start of your new startup... What are you gonna build?
+            El comienzo de tu nuevo proyecto... Que vas a construir?
           </p>
 
-          <a
-            className="btn btn-primary"
-            href="https://shipfa.st/docs"
-            target="_blank"
-          >
-            Documentation & tutorials{" "}
+          <Link href="/dashboard" className="btn btn-primary">
+            Empezar{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -34,10 +30,10 @@ export default function Page() {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
+          </Link>
 
           <Link href="/blog" className="link link-hover text-sm">
-            Fancy a blog?
+            Visita el blog
           </Link>
         </section>
       </main>

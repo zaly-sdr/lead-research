@@ -1,20 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { User } from "@supabase/supabase-js";
 import { createClient } from "@/libs/supabase/client";
 import apiClient from "@/libs/api";
 
-// A button to show user some account actions
-//  1. Billing: open a Stripe Customer Portal to manage their billing (cancel subscription, update payment method, etc.).
-//     You have to manually activate the Customer Portal in your Stripe Dashboard (https://dashboard.stripe.com/test/settings/billing/portal)
-//     This is only available if the customer has a customerId (they made a purchase previously)
-//  2. Logout: sign out and go back to homepage
-// See more at https://shipfa.st/docs/components/buttonAccount
+// Un boton para mostrar al usuario algunas acciones de cuenta
+//  1. Facturacion: abre un Portal de Cliente de Stripe para gestionar su facturacion (cancelar suscripcion, actualizar metodo de pago, etc.).
+//     Debes activar manualmente el Portal de Cliente en tu Panel de Stripe (https://dashboard.stripe.com/test/settings/billing/portal)
+//     Esto solo esta disponible si el cliente tiene un customerId (hizo una compra previamente)
+//  2. Cerrar sesion: cierra sesion y vuelve a la pagina principal
 const ButtonAccount = () => {
-	const supabase = createClient();
+	// useMemo para evitar crear nueva instancia de supabase en cada render
+	const supabase = useMemo(() => createClient(), []);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [user, setUser] = useState<User>(null);
 
@@ -62,7 +62,7 @@ const ButtonAccount = () => {
 						{user?.user_metadata?.avatar_url ? (
 							<img
 								src={user?.user_metadata?.avatar_url}
-								alt={"Profile picture"}
+								alt={"Foto de perfil"}
 								className="w-6 h-6 rounded-full shrink-0"
 								referrerPolicy="no-referrer"
 								width={24}
@@ -76,7 +76,7 @@ const ButtonAccount = () => {
 
 						{user?.user_metadata?.name ||
 							user?.email?.split("@")[0] ||
-							"Account"}
+							"Cuenta"}
 
 						{isLoading ? (
 							<span className="loading loading-spinner loading-xs"></span>
@@ -124,7 +124,7 @@ const ButtonAccount = () => {
 												clipRule="evenodd"
 											/>
 										</svg>
-										Billing
+										Facturacion
 									</button>
 									<button
 										className="flex items-center gap-2 hover:bg-error/20 hover:text-error duration-200 py-1.5 px-4 w-full rounded-lg font-medium"
@@ -147,7 +147,7 @@ const ButtonAccount = () => {
 												clipRule="evenodd"
 											/>
 										</svg>
-										Logout
+										Cerrar sesion
 									</button>
 								</div>
 							</div>

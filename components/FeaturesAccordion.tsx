@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, memo } from "react";
 import type { JSX } from "react";
 import Image from "next/image";
 
@@ -14,18 +14,18 @@ interface Feature {
   svg?: JSX.Element;
 }
 
-// The features array is a list of features that will be displayed in the accordion.
-// - title: The title of the feature
-// - description: The description of the feature (when clicked)
-// - type: The type of media (video or image)
-// - path: The path to the media (for better SEO, try to use a local path)
-// - format: The format of the media (if type is 'video')
-// - alt: The alt text of the image (if type is 'image')
+// El array de features es una lista de caracteristicas que se mostraran en el acordeon.
+// - title: El titulo de la caracteristica
+// - description: La descripcion de la caracteristica (al hacer clic)
+// - type: El tipo de medio (video o imagen)
+// - path: La ruta al medio (para mejor SEO, intenta usar una ruta local)
+// - format: El formato del medio (si el tipo es 'video')
+// - alt: El texto alternativo de la imagen (si el tipo es 'image')
 const features = [
   {
     title: "Emails",
     description:
-      "Send transactional emails, setup your DNS to avoid spam folder (DKIM, DMARC, SPF in subdomain), and listen to webhook to receive & forward emails",
+      "Envia emails transaccionales, configura tu DNS para evitar la carpeta de spam (DKIM, DMARC, SPF en subdominio), y escucha webhooks para recibir y reenviar emails",
     type: "video",
     path: "https://d3m8mk7e1mf7xn.cloudfront.net/app/newsletter.webm",
     format: "video/webm",
@@ -46,12 +46,12 @@ const features = [
     ),
   },
   {
-    title: "Payments",
+    title: "Pagos",
     description:
-      "Create checkout sessions, handle webhooks to update user's account (subscriptions, one-time payments...) and tips to setup your account & reduce chargebacks",
+      "Crea sesiones de checkout, maneja webhooks para actualizar la cuenta del usuario (suscripciones, pagos unicos...) y consejos para configurar tu cuenta y reducir contracargos",
     type: "image",
     path: "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
-    alt: "A computer",
+    alt: "Una computadora",
     svg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -70,9 +70,9 @@ const features = [
     ),
   },
   {
-    title: "Authentication",
+    title: "Autenticacion",
     description:
-      "Magic links setup, login with Google walkthrough, save user in MongoDB/Supabase, private/protected pages & API calls",
+      "Configuracion de magic links, guia de login con Google, guarda usuarios en MongoDB/Supabase, paginas privadas/protegidas y llamadas API",
     svg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -91,9 +91,9 @@ const features = [
     ),
   },
   {
-    title: "Style",
+    title: "Estilos",
     description:
-      "Components, animations & sections (like this features section), 20+ themes with daisyUI, automatic dark mode",
+      "Componentes, animaciones y secciones (como esta seccion de features), 20+ temas con daisyUI, modo oscuro automatico",
     svg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -113,8 +113,9 @@ const features = [
   },
 ] as Feature[];
 
-// An SEO-friendly accordion component including the title and a description (when clicked.)
-const Item = ({
+// Un componente acordeon optimizado para SEO que incluye el titulo y una descripcion (al hacer clic.)
+// memo() evita re-renders innecesarios cuando otros items cambian de estado
+const Item = memo(({
   feature,
   isOpen,
   setFeatureSelected,
@@ -162,10 +163,12 @@ const Item = ({
       </div>
     </li>
   );
-};
+});
 
-// A component to display the media (video or image) of the feature. If the type is not specified, it will display an empty div.
-// Video are set to autoplay for best UX.
+Item.displayName = "Item";
+
+// Un componente para mostrar el medio (video o imagen) de la caracteristica. Si el tipo no esta especificado, mostrara un div vacio.
+// Los videos estan configurados en autoplay para mejor UX.
 const Media = ({ feature }: { feature: Feature }) => {
   const { type, path, format, alt } = feature;
   const style = "rounded-2xl aspect-square w-full sm:w-[26rem]";
@@ -204,8 +207,8 @@ const Media = ({ feature }: { feature: Feature }) => {
   }
 };
 
-// A component to display 2 to 5 features in an accordion.
-// By default, the first feature is selected. When a feature is clicked, the others are closed.
+// Un componente para mostrar de 2 a 5 caracteristicas en un acordeon.
+// Por defecto, la primera caracteristica esta seleccionada. Al hacer clic en una caracteristica, las otras se cierran.
 const FeaturesAccordion = () => {
   const [featureSelected, setFeatureSelected] = useState<number>(0);
 
@@ -216,9 +219,9 @@ const FeaturesAccordion = () => {
     >
       <div className="px-8">
         <h2 className="font-extrabold text-4xl lg:text-6xl tracking-tight mb-12 md:mb-24">
-          All you need to ship your startup fast
+          Todo lo que necesitas para lanzar tu startup rapido
           <span className="bg-neutral text-neutral-content px-2 md:px-4 ml-1 md:ml-1.5 leading-relaxed whitespace-nowrap">
-            and get profitable
+            y ser rentable
           </span>
         </h2>
         <div className=" flex flex-col md:flex-row gap-12 md:gap-24">

@@ -8,7 +8,7 @@ const ButtonPopover = () => {
       {({ open }) => (
         <>
           <Popover.Button className="btn">
-            Popover Button
+            Boton Popover
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -58,9 +58,9 @@ const ButtonPopover = () => {
                       </svg>
                     </span>
                     <div className="">
-                      <p className="font-bold">Get Started</p>
+                      <p className="font-bold">Comenzar</p>
                       <p className="opacity-70">
-                        Loreum ipseum de la madre de papa
+                        Descripcion del elemento
                       </p>
                     </div>
                   </div>
@@ -82,9 +82,9 @@ const ButtonPopover = () => {
                       </svg>
                     </span>
                     <div className="">
-                      <p className="font-bold">Rewards</p>
+                      <p className="font-bold">Recompensas</p>
                       <p className="opacity-70">
-                        Loreum ipseum de el papi de la mama
+                        Descripcion del elemento
                       </p>
                     </div>
                   </div>
@@ -106,9 +106,9 @@ const ButtonPopover = () => {
                       </svg>
                     </span>
                     <div className="">
-                      <p className="font-bold">Academics</p>
+                      <p className="font-bold">Academicos</p>
                       <p className="opacity-70">
-                        Loreum ipseum de la madre de papa
+                        Descripcion del elemento
                       </p>
                     </div>
                   </div>

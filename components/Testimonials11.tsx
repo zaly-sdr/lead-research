@@ -5,8 +5,8 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import config from "@/config";
 
-// Use this object to add an icon to the testimonial (optional) like the Product Hunt logo for instance.
-// Only change the values if you add more referrings sites (currently Twitter & Product Hunt)
+// Usa este objeto para agregar un icono al testimonio (opcional) como el logo de Product Hunt por ejemplo.
+// Solo cambia los valores si agregas mas sitios de referencia (actualmente Twitter y Product Hunt)
 const refTypes: {
   productHunt: {
     id: string;
@@ -27,7 +27,7 @@ const refTypes: {
 } = {
   productHunt: {
     id: "product_hunt",
-    ariaLabel: "See user review on Product Hunt",
+    ariaLabel: "Ver resena del usuario en Product Hunt",
     svg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ const refTypes: {
   },
   twitter: {
     id: "twitter",
-    ariaLabel: "See user post on Twitter",
+    ariaLabel: "Ver publicacion del usuario en Twitter",
     svg: (
       <svg
         className="w-5 h-5 fill-[#00aCee]"
@@ -64,7 +64,7 @@ const refTypes: {
   other: { id: "other" },
 };
 
-// The list of your testimonials. It needs 11 items to fill the grid. The last one (11th) is featured on large devices (span 2 columns + big font)
+// La lista de tus testimonios. Necesita 11 elementos para llenar la cuadricula. El ultimo (11vo) destaca en dispositivos grandes (ocupa 2 columnas + fuente grande)
 const list: {
   username?: string;
   name: string;
@@ -79,60 +79,60 @@ const list: {
   videoType?: "video/ogg" | "video/mp4" | "video/webm";
 }[] = [
   {
-    // Show @username for social media like Twitter. Does not link anywhere but cool to display
+    // Muestra @username para redes sociales como Twitter. No enlaza a ningun lugar pero es cool mostrarlo
     username: "marclou",
     name: "Marc Lou",
-    text: "Really easy to use. The tutorials are really useful and explains how everything works. Hope to ship my next project really fast!",
-    // use refTypes.other if you don't want to display an icon
+    text: "Realmente facil de usar. Los tutoriales son muy utiles y explican como funciona todo. Espero lanzar mi proximo proyecto muy rapido!",
+    // usa refTypes.other si no quieres mostrar un icono
     type: refTypes.twitter,
-    // Link to the person's testimonial. It's more trustable
+    // Enlace al testimonio de la persona. Es mas confiable
     link: "https://twitter.com/marc_louvion",
-    // A statically imported image (usually from your public folder—recommended) or a link to the person's avatar. Shows a fallback letter if not provided
+    // Una imagen importada estaticamente (usualmente de tu carpeta public—recomendado) o un enlace al avatar de la persona. Muestra una letra de respaldo si no se proporciona
     img: "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
-    // You can display video testimonials to build more trust. Just swap the type above to "video" and add at least the video source below
+    // Puedes mostrar testimonios en video para construir mas confianza. Solo cambia el tipo arriba a "video" y agrega al menos la fuente del video abajo
     // videoSrc: "/jack.mp4"
   },
   {
     username: "the_mcnaveen",
     name: "Naveen",
-    text: "Setting up everything from the ground up is a really hard, and time consuming process. What you pay for will save your time for sure.",
+    text: "Configurar todo desde cero es un proceso realmente dificil y consume mucho tiempo. Lo que pagas te ahorrara tiempo seguro.",
     type: refTypes.twitter,
     link: "https://twitter.com/the_mcnaveen",
   },
   {
     username: "wahab",
     name: "Wahab Shaikh",
-    text: "Easily saves 15+ hrs for me setting up trivial stuff. Now, I can directly focus on shipping features rather than hours of setting up the same technologies from scratch. Feels like a super power! :D",
+    text: "Facilmente me ahorra mas de 15 horas configurando cosas triviales. Ahora puedo enfocarme directamente en lanzar funciones en lugar de horas configurando las mismas tecnologias desde cero. Se siente como un superpoder! :D",
     type: refTypes.productHunt,
     link: "https://www.producthunt.com/products/shipfast-2/reviews?review=667971",
   },
   {
     name: "Sean",
-    text: "Just purchased and cloned and *holy shit!* I realllyyy like what I'm seeing here!",
+    text: "Acabo de comprar y clonar y *wow!* Realmente me gusta lo que estoy viendo aqui!",
     type: refTypes.other,
   },
   {
     username: "krishna",
     name: "Krishna Kant",
-    text: "Finally a good boilerplate for Nextjs, now I dont have to cry about it comparing with laravel ecosystem.",
+    text: "Finalmente un buen boilerplate para Nextjs, ahora no tengo que llorar comparandolo con el ecosistema de Laravel.",
     type: refTypes.productHunt,
     link: "https://www.producthunt.com/posts/shipfast-2?comment=2707061",
   },
   {
     username: "imgyf",
     name: "Yifan Goh",
-    text: "It's a game changer  🚀 Comes with easy to follow tutorial, and saves you a ton of time. What's not to love?",
+    text: "Es un cambio de juego 🚀 Viene con tutoriales faciles de seguir, y te ahorra mucho tiempo. Que hay que no amar?",
     type: refTypes.twitter,
     link: "https://twitter.com/imgyf/status/1697549891080532236?s=20",
   },
   {
     name: "Yazdun",
-    text: "Yo Marc, I got the boilerplate, it's fantastic man you just save me 10 hours on each project",
+    text: "Hey, obtuve el boilerplate, es fantastico me ahorras 10 horas en cada proyecto",
     type: refTypes.other,
   },
   {
     name: "Marc Lou",
-    text: "The tool is exactly what I didn't even know I needed.",
+    text: "La herramienta es exactamente lo que no sabia que necesitaba.",
     videoPoster: "https://d1wkquwg5s1b04.cloudfront.net/demo/marcPoster.jpg",
     videoSrc: "https://d1wkquwg5s1b04.cloudfront.net/demo/marcVideo.mp4",
     videoHeight: 250,
@@ -142,27 +142,27 @@ const list: {
   {
     username: "zawwadx",
     name: "Zawwad Ul Sami",
-    text: "It's an amazing minimalist, lightweight boilerplate with well-organized code. It has almost all the core features you would want in a SaaS boilerplate. As a new team last year it actually took us months to build a similar set of features at a stable level.",
+    text: "Es un boilerplate minimalista y ligero increible con codigo bien organizado. Tiene casi todas las caracteristicas principales que querrias en un boilerplate SaaS. Como equipo nuevo el ano pasado nos tomo meses construir un conjunto similar de caracteristicas a un nivel estable.",
     type: refTypes.twitter,
   },
   {
     username: "dan",
     name: "Dan Mindru",
-    text: "Probably one of the most powerful things you can 'npm install' that I've seen",
+    text: "Probablemente una de las cosas mas poderosas que puedes 'npm install' que he visto",
     type: refTypes.productHunt,
     link: "https://www.producthunt.com/posts/shipfast-2?comment=2706763",
   },
-  // The last testimonial is featured on big devices (span 2 columns + big font) 👇
+  // El ultimo testimonio destaca en dispositivos grandes (ocupa 2 columnas + fuente grande) 👇
   {
     username: "VicPivots",
     name: "Victor Abeledo",
-    text: "Marc, I got your boilerplate and having the payments setup with Stripe + user auth is a blessing. This will save me like a week of work for each new side project I spin up. I appreciate that is well documented, as well. 100% worth it 🚀🚀🚀",
+    text: "Obtuve tu boilerplate y tener los pagos configurados con Stripe + autenticacion de usuario es una bendicion. Esto me ahorrara como una semana de trabajo por cada nuevo proyecto que inicie. Aprecio que este bien documentado tambien. 100% vale la pena 🚀🚀🚀",
     type: refTypes.twitter,
     link: "https://twitter.com/VicPivots/status/1697352442986250413?s=20",
   },
 ];
 
-// A single testimonial, to be rendered in  a list
+// Un solo testimonio, para ser renderizado en una lista
 const Testimonial = ({ i }: { i: number }) => {
   const testimonial = list[i];
 
@@ -223,7 +223,7 @@ const Testimonial = ({ i }: { i: number }) => {
   );
 };
 
-// A video tesionial to build trust. 2 or 3 on a wall of love is perfect.
+// Un testimonio en video para construir confianza. 2 o 3 en un muro de amor es perfecto.
 const VideoTestimonial = ({ i }: { i: number }) => {
   const vidRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -277,7 +277,7 @@ const VideoTestimonial = ({ i }: { i: number }) => {
             src={testimonial.videoSrc}
             type={testimonial.videoType || "video/mp4"}
           />
-          Your browser does not support the videos
+          Tu navegador no soporta los videos
         </video>
 
         {!isPlaying && (
@@ -289,12 +289,12 @@ const VideoTestimonial = ({ i }: { i: number }) => {
             <button
               className="group cursor-pointer"
               type="button"
-              title="Play video"
-              aria-label="Play video"
+              title="Reproducir video"
+              aria-label="Reproducir video"
               onClick={handlePlayVideo}
             >
               {isPlaying ? (
-                // PAUSE
+                // PAUSA
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -308,7 +308,7 @@ const VideoTestimonial = ({ i }: { i: number }) => {
                   />
                 </svg>
               ) : (
-                // PLAY
+                // REPRODUCIR
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -366,12 +366,12 @@ const Testimonials11 = () => {
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
             <h2 className="sm:text-5xl text-4xl font-extrabold text-base-content">
-              212 makers are already shipping faster!
+              212 makers ya estan lanzando mas rapido!
             </h2>
           </div>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-base-content/80">
-            Don&apos;t take our word for it. Here&apos;s what they have to say
-            about {config.appName}.
+            No tomes nuestra palabra. Esto es lo que tienen que decir
+            sobre {config.appName}.
           </p>
         </div>
 
@@ -388,7 +388,7 @@ const Testimonials11 = () => {
           </li>
 
           <li className="hidden md:grid order-none md:order-first lg:order-none col-span-2 grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {/* BIG FEATURED TESTIMONIAL — THE LAST ONE IN THE LIST (11th) */}
+            {/* GRAN TESTIMONIO DESTACADO — EL ULTIMO EN LA LISTA (11vo) */}
             <ul className="col-span-2">
               <li>
                 <figure className="relative h-full p-6 bg-base-100 rounded-lg">

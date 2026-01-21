@@ -18,7 +18,7 @@ interface CreateCustomerPortalParams {
   returnUrl: string;
 }
 
-// This is used to create a Stripe Checkout for one-time payments. It's usually triggered with the <ButtonCheckout /> component. Webhooks are used to update the user's state in the database.
+// Se usa para crear un Checkout de Stripe para pagos unicos. Normalmente se activa con el componente <ButtonCheckout />. Los webhooks se usan para actualizar el estado del usuario en la base de datos.
 export const createCheckout = async ({
   user,
   mode,
@@ -30,7 +30,7 @@ export const createCheckout = async ({
 }: CreateCheckoutParams): Promise<string> => {
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-      apiVersion: "2023-08-16", // TODO: update this when Stripe updates their API
+      apiVersion: "2023-08-16", // TODO: actualizar cuando Stripe actualice su API
       typescript: true,
     });
 
@@ -48,7 +48,7 @@ export const createCheckout = async ({
     } else {
       if (mode === "payment") {
         extraParams.customer_creation = "always";
-        // The option below costs 0.4% (up to $2) per invoice. Alternatively, you can use https://zenvoice.io/ to create unlimited invoices automatically.
+        // La opcion de abajo cuesta 0.4% (hasta $2) por factura. Alternativamente, puedes usar https://zenvoice.io/ para crear facturas ilimitadas automaticamente.
         // extraParams.invoice_creation = { enabled: true };
         extraParams.payment_intent_data = { setup_future_usage: "on_session" };
       }
@@ -87,13 +87,13 @@ export const createCheckout = async ({
   }
 };
 
-// This is used to create Customer Portal sessions, so users can manage their subscriptions (payment methods, cancel, etc..)
+// Se usa para crear sesiones del Portal de Cliente, para que los usuarios puedan gestionar sus suscripciones (metodos de pago, cancelar, etc.)
 export const createCustomerPortal = async ({
   customerId,
   returnUrl,
 }: CreateCustomerPortalParams): Promise<string> => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-    apiVersion: "2023-08-16", // TODO: update this when Stripe updates their API
+    apiVersion: "2023-08-16", // TODO: actualizar cuando Stripe actualice su API
     typescript: true,
   });
 
@@ -105,11 +105,11 @@ export const createCustomerPortal = async ({
   return portalSession.url;
 };
 
-// This is used to get the uesr checkout session and populate the data so we get the planId the user subscribed to
+// Se usa para obtener la sesion de checkout del usuario y poblar los datos para obtener el planId al que el usuario se suscribio
 export const findCheckoutSession = async (sessionId: string) => {
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-      apiVersion: "2023-08-16", // TODO: update this when Stripe updates their API
+      apiVersion: "2023-08-16", // TODO: actualizar cuando Stripe actualice su API
       typescript: true,
     });
 

@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, memo } from "react";
 import type { JSX } from "react";
 
-// <FAQ> component is a lsit of <Item> component
-// Just import the FAQ & add your FAQ content to the const faqList arrayy below.
+// El componente <FAQ> es una lista de componentes <Item>
+// Solo importa el FAQ y agrega tu contenido de FAQ al array faqList abajo.
 
 interface FAQItemProps {
   question: string;
@@ -13,27 +13,30 @@ interface FAQItemProps {
 
 const faqList: FAQItemProps[] = [
   {
-    question: "What do I get exactly?",
+    question: "Que obtengo exactamente?",
     answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
   },
   {
-    question: "Can I get a refund?",
+    question: "Puedo obtener un reembolso?",
     answer: (
       <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
+        Si! Puedes solicitar un reembolso dentro de los 7 dias de tu compra.
+        Contactanos por email.
       </p>
     ),
   },
   {
-    question: "I have another question",
+    question: "Tengo otra pregunta",
     answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
+      <div className="space-y-2 leading-relaxed">
+        Genial, contactanos por email
+      </div>
     ),
   },
 ];
 
-const FaqItem = ({ item }: { item: FAQItemProps }) => {
+// memo() evita re-renders innecesarios cuando otros items cambian de estado
+const FaqItem = memo(({ item }: { item: FAQItemProps }) => {
   const accordion = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -91,7 +94,9 @@ const FaqItem = ({ item }: { item: FAQItemProps }) => {
       </div>
     </li>
   );
-};
+});
+
+FaqItem.displayName = "FaqItem";
 
 const FAQ = () => {
   return (
@@ -100,7 +105,7 @@ const FAQ = () => {
         <div className="flex flex-col text-left basis-1/2">
           <p className="inline-block font-semibold text-primary mb-4">FAQ</p>
           <p className="sm:text-4xl text-3xl font-extrabold text-base-content">
-            Frequently Asked Questions
+            Preguntas Frecuentes
           </p>
         </div>
 

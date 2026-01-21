@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import type { JSX } from "react";
 
-// List of features to display:
-// - name: name of the feature
-// - description: description of the feature (can be any JSX)
-// - svg: icon of the feature
+// Lista de caracteristicas a mostrar:
+// - name: nombre de la caracteristica
+// - description: descripcion de la caracteristica (puede ser cualquier JSX)
+// - svg: icono de la caracteristica
 const features: {
   name: string;
   description: JSX.Element;
@@ -18,9 +18,9 @@ const features: {
       <>
         <ul className="space-y-1">
           {[
-            "Send transactional emails",
-            "DNS setup to avoid spam folder (DKIM, DMARC, SPF in subdomain)",
-            "Webhook to receive & forward emails",
+            "Envia emails transaccionales",
+            "Configuracion DNS para evitar carpeta de spam (DKIM, DMARC, SPF en subdominio)",
+            "Webhook para recibir y reenviar emails",
           ].map((item) => (
             <li key={item} className="flex items-center gap-3">
               <svg
@@ -52,7 +52,7 @@ const features: {
                 clipRule="evenodd"
               />
             </svg>
-            Time saved: 2 hours
+            Tiempo ahorrado: 2 horas
           </li>
         </ul>
       </>
@@ -74,14 +74,14 @@ const features: {
     ),
   },
   {
-    name: "Payments",
+    name: "Pagos",
     description: (
       <>
         <ul className="space-y-2">
           {[
-            "Create checkout sessions",
-            "Handle webhooks to update user's account",
-            "Tips to setup your account & reduce chargebacks",
+            "Crea sesiones de checkout",
+            "Maneja webhooks para actualizar cuenta del usuario",
+            "Consejos para configurar tu cuenta y reducir contracargos",
           ].map((item) => (
             <li key={item} className="flex items-center gap-3">
               <svg
@@ -113,7 +113,7 @@ const features: {
                 clipRule="evenodd"
               />
             </svg>
-            Time saved: 2 hours
+            Tiempo ahorrado: 2 horas
           </li>
         </ul>
       </>
@@ -136,15 +136,15 @@ const features: {
     ),
   },
   {
-    name: "Login",
+    name: "Inicio de sesion",
     description: (
       <>
         <ul className="space-y-2">
           {[
-            "Magic links setup",
-            "Login with Google walkthrough",
-            "Save user data in MongoDB",
-            "Private/protected pages & API calls",
+            "Configuracion de magic links",
+            "Guia de login con Google",
+            "Guarda datos de usuario en MongoDB",
+            "Paginas privadas/protegidas y llamadas API",
           ].map((item) => (
             <li key={item} className="flex items-center gap-3">
               <svg
@@ -176,7 +176,7 @@ const features: {
                 clipRule="evenodd"
               />
             </svg>
-            Time saved: 3 hours
+            Tiempo ahorrado: 3 horas
           </li>
         </ul>
       </>
@@ -199,11 +199,11 @@ const features: {
     ),
   },
   {
-    name: "Database",
+    name: "Base de datos",
     description: (
       <>
         <ul className="space-y-2">
-          {["Mongoose schema", "Mongoose plugins to make your life easier"].map(
+          {["Esquema de Mongoose", "Plugins de Mongoose para facilitarte la vida"].map(
             (item) => (
               <li key={item} className="flex items-center gap-3">
                 <svg
@@ -236,7 +236,7 @@ const features: {
                 clipRule="evenodd"
               />
             </svg>
-            Time saved: 2 hours
+            Tiempo ahorrado: 2 horas
           </li>
         </ul>
       </>
@@ -264,11 +264,11 @@ const features: {
       <>
         <ul className="space-y-2">
           {[
-            "All meta tags to rank on Google",
-            "OpenGraph tags to share on social media",
-            "Automated sitemap generation to fasten Google indexing",
-            "Structured data markup for Rich Snippets",
-            "SEO-optimized UI components",
+            "Todas las meta tags para posicionar en Google",
+            "Tags OpenGraph para compartir en redes sociales",
+            "Generacion automatica de sitemap para acelerar indexacion de Google",
+            "Marcado de datos estructurados para Rich Snippets",
+            "Componentes UI optimizados para SEO",
           ].map((item) => (
             <li key={item} className="flex items-center gap-3">
               <svg
@@ -300,7 +300,7 @@ const features: {
                 clipRule="evenodd"
               />
             </svg>
-            Time saved: 6 hours
+            Tiempo ahorrado: 6 horas
           </li>
         </ul>
       </>
@@ -323,14 +323,14 @@ const features: {
     ),
   },
   {
-    name: "Style",
+    name: "Estilos",
     description: (
       <>
         <ul className="space-y-2">
           {[
-            "Components, animations & sections (like the pricing page below)",
-            "20+ themes with daisyUI",
-            "Automatic dark mode",
+            "Componentes, animaciones y secciones (como la pagina de precios abajo)",
+            "20+ temas con daisyUI",
+            "Modo oscuro automatico",
           ].map((item) => (
             <li key={item} className="flex items-center gap-3">
               <svg
@@ -362,7 +362,7 @@ const features: {
                 clipRule="evenodd"
               />
             </svg>
-            Time saved: 5 hours
+            Tiempo ahorrado: 5 horas
           </li>
         </ul>
       </>
@@ -386,10 +386,10 @@ const features: {
   },
 ];
 
-// A list of features with a listicle style.
-// - Click on a feature to display its description.
-// - Good to use when multiples features are available.
-// - Autoscroll the list of features (optional).
+// Una lista de caracteristicas con estilo de lista.
+// - Haz clic en una caracteristica para mostrar su descripcion.
+// - Bueno para usar cuando hay multiples caracteristicas disponibles.
+// - Auto-desplazamiento de la lista de caracteristicas (opcional).
 const FeaturesListicle = () => {
   const featuresEndRef = useRef<null>(null);
   const [featureSelected, setFeatureSelected] = useState<string>(
@@ -397,9 +397,9 @@ const FeaturesListicle = () => {
   );
   const [hasClicked, setHasClicked] = useState<boolean>(false);
 
-  // (Optional) Autoscroll the list of features so user know it's interactive.
-  // Stop scrolling when user scroll after the featuresEndRef element (end of section)
-  // emove useEffect is not needed.
+  // (Opcional) Auto-desplazamiento de la lista de caracteristicas para que el usuario sepa que es interactiva.
+  // Detiene el desplazamiento cuando el usuario hace scroll despues del elemento featuresEndRef (fin de seccion)
+  // Elimina useEffect si no es necesario.
   useEffect(() => {
     const interval = setInterval(() => {
       if (!hasClicked) {
@@ -412,7 +412,7 @@ const FeaturesListicle = () => {
     }, 5000);
 
     try {
-      // stop the interval when the user scroll after the featuresRef element
+      // detiene el intervalo cuando el usuario hace scroll despues del elemento featuresRef
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
@@ -441,18 +441,18 @@ const FeaturesListicle = () => {
       <div className="max-w-3xl mx-auto">
         <div className="bg-base-100 max-md:px-8 max-w-3xl">
           <p className="text-accent font-medium text-sm font-mono mb-3">
-            {/* Pure decoration, you can remove it */}
-            const launch_time = &quot;Today&quot;;
+            {/* Pura decoracion, puedes eliminarlo */}
+            const launch_time = &quot;Hoy&quot;;
           </p>
           <h2 className="font-extrabold text-3xl lg:text-5xl tracking-tight mb-8">
-            {/* 💡 COPY TIP: Remind visitors about the value of your product. Why do they need it? */}
-            Supercharge your app instantly, launch faster, make $
+            {/* 💡 CONSEJO: Recuerda a los visitantes el valor de tu producto. Por que lo necesitan? */}
+            Potencia tu app al instante, lanza mas rapido, genera $
           </h2>
           <div className="text-base-content/80 leading-relaxed mb-8 lg:text-lg">
-            {/* 💡 COPY TIP: Explain how your product delivers what you promise in the headline. */}
-            Login users, process payments and send emails at lightspeed. Spend
-            your time building your startup, not integrating APIs. ShipFast
-            provides you with the boilerplate code you need to launch, FAST.
+            {/* 💡 CONSEJO: Explica como tu producto entrega lo que prometes en el titulo. */}
+            Inicia sesion de usuarios, procesa pagos y envia emails a la velocidad de la luz.
+            Dedica tu tiempo a construir tu startup, no a integrar APIs. Te proporcionamos
+            el codigo boilerplate que necesitas para lanzar RAPIDO.
           </div>
         </div>
       </div>
@@ -504,7 +504,7 @@ const FeaturesListicle = () => {
           </div>
         </div>
       </div>
-      {/* Just used to know it's the end of the autoscroll feature (optional, see useEffect) */}
+      {/* Solo se usa para saber que es el fin de la funcion de auto-desplazamiento (opcional, ver useEffect) */}
       <p className="opacity-0" ref={featuresEndRef}></p>
     </section>
   );

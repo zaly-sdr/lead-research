@@ -15,11 +15,11 @@ const links: {
 }[] = [
   {
     href: "/#pricing",
-    label: "Pricing",
+    label: "Precios",
   },
   {
     href: "/#testimonials",
-    label: "Reviews",
+    label: "Opiniones",
   },
   {
     href: "/#faq",
@@ -29,13 +29,13 @@ const links: {
 
 const cta: JSX.Element = <ButtonSignin extraStyle="btn-primary" />;
 
-// A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
-// The header is responsive, and on mobile, the links are hidden behind a burger button.
+// Un header con un logo a la izquierda, enlaces en el centro (como Precios, etc.), y un CTA (como Empezar o Login) a la derecha.
+// El header es responsive, y en movil, los enlaces se ocultan detras de un boton hamburguesa.
 const Header = () => {
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  // setIsOpen(false) when the route changes (i.e: when the user clicks on a link on mobile)
+  // setIsOpen(false) cuando la ruta cambia (es decir: cuando el usuario hace clic en un enlace en movil)
   useEffect(() => {
     setIsOpen(false);
   }, [searchParams]);
@@ -46,16 +46,16 @@ const Header = () => {
         className="container flex items-center justify-between px-8 py-4 mx-auto"
         aria-label="Global"
       >
-        {/* Your logo/name on large screens */}
+        {/* Tu logo/nombre en pantallas grandes */}
         <div className="flex lg:flex-1">
           <Link
             className="flex items-center gap-2 shrink-0 "
             href="/"
-            title={`${config.appName} homepage`}
+            title={`Inicio de ${config.appName}`}
           >
             <Image
               src={logo}
-              alt={`${config.appName} logo`}
+              alt={`Logo de ${config.appName}`}
               className="w-8"
               placeholder="blur"
               priority={true}
@@ -65,14 +65,14 @@ const Header = () => {
             <span className="font-extrabold text-lg">{config.appName}</span>
           </Link>
         </div>
-        {/* Burger button to open menu on mobile */}
+        {/* Boton hamburguesa para abrir menu en movil */}
         <div className="flex lg:hidden">
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
             onClick={() => setIsOpen(true)}
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">Abrir menu principal</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -90,7 +90,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Your links on large screens */}
+        {/* Tus enlaces en pantallas grandes */}
         <div className="hidden lg:flex lg:justify-center lg:gap-12 lg:items-center">
           {links.map((link) => (
             <Link
@@ -104,25 +104,25 @@ const Header = () => {
           ))}
         </div>
 
-        {/* CTA on large screens */}
+        {/* CTA en pantallas grandes */}
         <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div>
       </nav>
 
-      {/* Mobile menu, show/hide based on menu state. */}
+      {/* Menu movil, mostrar/ocultar segun el estado del menu. */}
       <div className={`relative z-50 ${isOpen ? "" : "hidden"}`}>
         <div
           className={`fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-base-200 sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300`}
         >
-          {/* Your logo/name on small screens */}
+          {/* Tu logo/nombre en pantallas pequenas */}
           <div className="flex items-center justify-between">
             <Link
               className="flex items-center gap-2 shrink-0 "
-              title={`${config.appName} homepage`}
+              title={`Inicio de ${config.appName}`}
               href="/"
             >
               <Image
                 src={logo}
-                alt={`${config.appName} logo`}
+                alt={`Logo de ${config.appName}`}
                 className="w-8"
                 placeholder="blur"
                 priority={true}
@@ -136,7 +136,7 @@ const Header = () => {
               className="-m-2.5 rounded-md p-2.5"
               onClick={() => setIsOpen(false)}
             >
-              <span className="sr-only">Close menu</span>
+              <span className="sr-only">Cerrar menu</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -154,7 +154,7 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Your links on small screens */}
+          {/* Tus enlaces en pantallas pequenas */}
           <div className="flow-root mt-6">
             <div className="py-4">
               <div className="flex flex-col gap-y-4 items-start">
@@ -171,7 +171,7 @@ const Header = () => {
               </div>
             </div>
             <div className="divider"></div>
-            {/* Your CTA on small screens */}
+            {/* Tu CTA en pantallas pequenas */}
             <div className="flex flex-col">{cta}</div>
           </div>
         </div>

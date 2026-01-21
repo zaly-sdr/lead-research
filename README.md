@@ -1,38 +1,58 @@
-# ShipFast — Typescript
+# IA LAB — TypeScript
 
-Hey maker 👋 it's Marc from [ShipFast](https://shipfa.st/docs). Let's get your startup off the ground, FAST ⚡️
+Plantilla SaaS Next.js 15+ con TypeScript, Stripe, Supabase y TailwindCSS.
 
-<sub>**Watch/Star the repo to be notified when updates are pushed**</sub>
+## Comenzar
 
-## Get Started
+1. Clona el repositorio y ejecuta tu servidor local:
 
-1. Follow the [Get Started Tutorial](https://shipfa.st/docs) to clone the repo and run your local server 💻
+```bash
+npm install
+npm run dev
+```
 
-<sub>**Looking for the /pages router version?** Use this [documentation](https://shipfa.st/docs-old) instead</sub>
+2. Configura las variables de entorno en `.env.local`
 
-2. Follow the [Ship In 5 Minutes Tutorial](https://shipfa.st/docs/tutorials/ship-in-5-minutes) to learn the foundation and ship your app quickly ⚡️
+## Stack Tecnologico
 
-## Links
+- **Framework**: Next.js 15+ con App Router
+- **Lenguaje**: TypeScript 5.9+
+- **Base de datos**: Supabase (PostgreSQL)
+- **Autenticacion**: Supabase Auth con Google OAuth
+- **Pagos**: Stripe con webhooks
+- **Estilos**: TailwindCSS 4.1+ con DaisyUI 5.0+
+- **Emails**: Resend para emails transaccionales
+- **Blog**: Soporte MDX para contenido
 
--   [📚 Documentation](https://shipfa.st/docs)
--   [📣 Updates](https://shipfast.beehiiv.com/)
--   [🧑‍💻 Discord](https://shipfa.st/dashboard)
--   [🥇 Leaderboard](https://shipfa.st/leaderboard)
+## Estructura del Proyecto
 
-## Support
+```
+app/                    # Paginas y rutas de API
+components/             # Componentes React
+libs/                   # Utilidades y configuracion
+  supabase/             # Clientes de Supabase
+  stripe.ts             # Integracion de Stripe
+  seo.tsx               # Funciones de SEO
+types/                  # Tipos TypeScript
+config.ts               # Configuracion de la app
+```
 
-Reach out at hello@shipfa.st
+## Variables de Entorno
 
-Let's ship it, FAST ⚡️
+Crea un archivo `.env.local` con las siguientes variables:
 
-\_
+```env
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+RESEND_API_KEY=
+```
 
-**📈 Grow your startup with [DataFast](https://datafa.st?ref=shipfast_readme)**
+## Comandos
 
--   Analyze your traffic
--   Get insights on your customers
--   Make data-driven decisions
-
-ShipFast members get 30% OFF on all plans! 🎁
-
-![datafast](https://github.com/user-attachments/assets/2a9710f8-9a39-4593-b4bf-9ee933529870)
+- `npm run dev` - Servidor de desarrollo
+- `npm run build` - Construir para produccion
+- `npm start` - Ejecutar en produccion
+- `npm run lint` - Verificar codigo

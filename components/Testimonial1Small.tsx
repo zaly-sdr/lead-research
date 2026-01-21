@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-// A one or two sentences testimonial from a customer.
-// Highlight the outcome for your customer (how did your product changed her/his life?) or the pain it's removing — Use <span className="bg-warning/25 px-1.5"> to highlight a part of the sentence
+// Un testimonio de una o dos oraciones de un cliente.
+// Resalta el resultado para tu cliente (como tu producto cambio su vida?) o el dolor que elimina — Usa <span className="bg-warning/25 px-1.5"> para resaltar parte de la oracion
 const Testimonial1Small = () => {
   return (
     <section className="bg-base-100">
@@ -26,27 +26,27 @@ const Testimonial1Small = () => {
         <div className="text-base leading-relaxed space-y-2 max-w-md mx-auto text-center">
           <p>
             <span className="bg-warning/25 px-1.5">
-              I don&apos;t want to pay Stripe $2 for every invoice.
+              No quiero pagar $2 por cada factura.
             </span>{" "}
-            I don&apos;t want to spend 10 minutes manually crafting every
-            invoice either.
+            Tampoco quiero pasar 10 minutos creando manualmente cada
+            factura.
           </p>
           <p>
-            Zenvoice solved this problem once and for all. The app is simple,
-            but it nails the job perfectly.
+            Esta solucion resolvio este problema de una vez por todas. La app es simple,
+            pero hace el trabajo perfectamente.
           </p>
         </div>
         <div className="flex justify-center items-center gap-3 md:gap-4">
           <Image
             className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
             src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=4140&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt={`XYZ feedback for ZenVoice`}
+            alt={`Feedback de cliente`}
             width={48}
             height={48}
           />
           <div>
-            <p className="font-semibold">Someone Nice</p>
-            <p className="text-base-content/80 text-sm">23.1K followers on 𝕏</p>
+            <p className="font-semibold">Alguien Genial</p>
+            <p className="text-base-content/80 text-sm">23.1K seguidores en 𝕏</p>
           </div>
         </div>
       </div>

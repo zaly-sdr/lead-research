@@ -10,10 +10,10 @@ interface Tab {
 	content: JSX.Element;
 }
 
-// The list of tabs to be displayed. It only shows the content of the active tab.
-// - icon is optional
-// - title is required
-// - content is required, it's the content to be displayed when the tab is active
+// La lista de pestanas a mostrar. Solo muestra el contenido de la pestana activa.
+// - icon es opcional
+// - title es requerido
+// - content es requerido, es el contenido a mostrar cuando la pestana esta activa
 
 const tabs: Tab[] = [
 	{
@@ -37,25 +37,25 @@ const tabs: Tab[] = [
 		content: (
 			<div className="space-y-2">
 				<p>
-					<strong>Device:</strong> iPhone 13 Pro
+					<strong>Dispositivo:</strong> iPhone 13 Pro
 				</p>
 				<p>
-					<strong>Screen Size:</strong> 6.1 inches
+					<strong>Tamano de pantalla:</strong> 6.1 pulgadas
 				</p>
 				<p>
-					<strong>Resolution:</strong> 2532 x 1170 pixels
+					<strong>Resolucion:</strong> 2532 x 1170 pixeles
 				</p>
 				<p>
-					<strong>Processor:</strong> A15 Bionic chip
+					<strong>Procesador:</strong> A15 Bionic chip
 				</p>
 				<p>
 					<strong>RAM:</strong> 6 GB
 				</p>
 				<p>
-					<strong>Storage:</strong> 256 GB
+					<strong>Almacenamiento:</strong> 256 GB
 				</p>
 				<p>
-					<strong>Battery:</strong> 3095 mAh
+					<strong>Bateria:</strong> 3095 mAh
 				</p>
 			</div>
 		),
@@ -80,25 +80,25 @@ const tabs: Tab[] = [
 		content: (
 			<div className="space-y-2">
 				<p>
-					<strong>Device:</strong> iPad Pro (12.9-inch)
+					<strong>Dispositivo:</strong> iPad Pro (12.9 pulgadas)
 				</p>
 				<p>
-					<strong>Screen Size:</strong> 12.9 inches
+					<strong>Tamano de pantalla:</strong> 12.9 pulgadas
 				</p>
 				<p>
-					<strong>Resolution:</strong> 2732 x 2048 pixels
+					<strong>Resolucion:</strong> 2732 x 2048 pixeles
 				</p>
 				<p>
-					<strong>Processor:</strong> A12X Bionic chip
+					<strong>Procesador:</strong> A12X Bionic chip
 				</p>
 				<p>
 					<strong>RAM:</strong> 4 GB
 				</p>
 				<p>
-					<strong>Storage:</strong> 256 GB
+					<strong>Almacenamiento:</strong> 256 GB
 				</p>
 				<p>
-					<strong>Battery:</strong> 10000 mAh
+					<strong>Bateria:</strong> 10000 mAh
 				</p>
 			</div>
 		),
@@ -123,25 +123,25 @@ const tabs: Tab[] = [
 		content: (
 			<div className="space-y-2">
 				<p>
-					<strong>Device:</strong> MacBook Pro (16-inch)
+					<strong>Dispositivo:</strong> MacBook Pro (16 pulgadas)
 				</p>
 				<p>
-					<strong>Screen Size:</strong> 16 inches
+					<strong>Tamano de pantalla:</strong> 16 pulgadas
 				</p>
 				<p>
-					<strong>Resolution:</strong> 3072 x 1920 pixels
+					<strong>Resolucion:</strong> 3072 x 1920 pixeles
 				</p>
 				<p>
-					<strong>Processor:</strong> Apple M3 chip
+					<strong>Procesador:</strong> Apple M3 chip
 				</p>
 				<p>
 					<strong>RAM:</strong> 16 GB
 				</p>
 				<p>
-					<strong>Storage:</strong> 1 TB
+					<strong>Almacenamiento:</strong> 1 TB
 				</p>
 				<p>
-					<strong>Battery:</strong> 10000 mAh
+					<strong>Bateria:</strong> 10000 mAh
 				</p>
 			</div>
 		),
@@ -153,7 +153,7 @@ const Tabs = () => {
 
 	return (
 		<section className="max-w-lg mx-auto space-y-4">
-			{/* TAB HEADER */}
+			{/* ENCABEZADO DE PESTANAS */}
 			<div
 				className="grid rounded-xl bg-base-200 p-1"
 				style={{ gridTemplateColumns: `repeat(${tabs.length}, 1fr)` }}
@@ -175,7 +175,7 @@ const Tabs = () => {
 				))}
 			</div>
 
-			{/* TAB CONTENT */}
+			{/* CONTENIDO DE PESTANAS */}
 			<div className="animate-opacity" key={activeTab}>
 				{tabs.find((tab) => tab.id === activeTab)?.content}
 			</div>

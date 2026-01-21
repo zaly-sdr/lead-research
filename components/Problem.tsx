@@ -30,37 +30,37 @@ const Step = ({ emoji, text }: { emoji: string; text: string }) => {
   );
 };
 
-// Problem Agitation: A crucial, yet overlooked, component for a landing page that sells.
-// It goes under your Hero section, and above your Features section.
-// Your Hero section makes a promise to the customer: "Our product will help you achieve XYZ".
-// Your Problem section explains what happens to the customer if its problem isn't solved.
-// The copy should NEVER mention your product. Instead, it should dig the emotional outcome of not fixing a problem.
-// For instance:
-// - Hero: "ShipFast helps developers launch startups fast"
-// - Problem Agitation: "Developers spend too much time adding features, get overwhelmed, and quit." (not about ShipFast at all)
-// - Features: "ShipFast has user auth, Stripe, emails all set up for you"
+// Agitacion del Problema: Un componente crucial, pero pasado por alto, para una landing page que vende.
+// Va debajo de tu seccion Hero, y arriba de tu seccion de Features.
+// Tu seccion Hero hace una promesa al cliente: "Nuestro producto te ayudara a lograr XYZ".
+// Tu seccion de Problema explica que le pasa al cliente si su problema no se resuelve.
+// El copy NUNCA debe mencionar tu producto. En cambio, debe profundizar en el resultado emocional de no resolver un problema.
+// Por ejemplo:
+// - Hero: "IA LAB ayuda a desarrolladores a lanzar startups rapido"
+// - Agitacion del Problema: "Los desarrolladores pasan demasiado tiempo agregando funciones, se abruman y abandonan." (no se trata de IA LAB)
+// - Features: "IA LAB tiene autenticacion de usuarios, Stripe, emails todo configurado para ti"
 const Problem = () => {
   return (
     <section className="bg-neutral text-neutral-content">
       <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
         <h2 className="max-w-3xl mx-auto font-extrabold text-4xl md:text-5xl tracking-tight mb-6 md:mb-8">
-          80% of startups fail because founders never launch
+          El 80% de las startups fracasan porque los fundadores nunca lanzan
         </h2>
         <p className="max-w-xl mx-auto text-lg opacity-90 leading-relaxed mb-12 md:mb-20">
-          Emails, DNS records, user authentication... There&apos;s so much going
-          on.
+          Emails, registros DNS, autenticacion de usuarios... Hay tantas cosas
+          que hacer.
         </p>
 
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
-          <Step emoji="🧑‍💻" text="8 hrs to add Stripe" />
+          <Step emoji="🧑‍💻" text="8 hrs para agregar Stripe" />
 
           <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
 
-          <Step emoji="😮‍💨" text="Struggle to find time" />
+          <Step emoji="😮‍💨" text="Luchando por encontrar tiempo" />
 
           <Arrow extraStyle="md:-scale-x-100 md:-rotate-90" />
 
-          <Step emoji="😔" text="Quit project" />
+          <Step emoji="😔" text="Abandona el proyecto" />
         </div>
       </div>
     </section>

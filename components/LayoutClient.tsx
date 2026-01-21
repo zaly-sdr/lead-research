@@ -2,7 +2,7 @@
 
 import { User } from "@supabase/supabase-js";
 import { createClient } from "@/libs/supabase/client";
-import { useEffect, useState, ReactNode } from "react";
+import { useEffect, useState, useMemo, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { Crisp } from "crisp-sdk-web";
 import NextTopLoader from "nextjs-toploader";
@@ -10,15 +10,16 @@ import { Toaster } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import config from "@/config";
 
-// Crisp customer chat support:
-// This component is separated from ClientLayout because it needs to be wrapped with <SessionProvider> to use useSession() hook
+// Soporte de chat al cliente con Crisp:
+// Este componente esta separado de ClientLayout porque necesita estar envuelto con <SessionProvider> para usar el hook useSession()
 const CrispChat = (): null => {
   const pathname = usePathname();
 
-  const supabase = createClient();
+  // useMemo para evitar crear nueva instancia de supabase en cada render
+  const supabase = useMemo(() => createClient(), []);
   const [data, setData] = useState<{ user: User }>(null);
 
-  // This is used to get the user data from Supabase Auth (if logged in) => user ID is used to identify users in Crisp
+  // Esto se usa para obtener los datos del usuario de Supabase Auth (si esta logueado) => el ID del usuario se usa para identificar usuarios en Crisp
   useEffect(() => {
     const getUser = async () => {
       const {
@@ -34,11 +35,11 @@ const CrispChat = (): null => {
 
   useEffect(() => {
     if (config?.crisp?.id) {
-      // Set up Crisp
+      // Configurar Crisp
       Crisp.configure(config.crisp.id);
 
-      // (Optional) If onlyShowOnRoutes array is not empty in config.js file, Crisp will be hidden on the routes in the array.
-      // Use <AppButtonSupport> instead to show it (user clicks on the button to show Crisp—it cleans the UI)
+      // (Opcional) Si el array onlyShowOnRoutes no esta vacio en config.js, Crisp se ocultara en las rutas del array.
+      // Usa <AppButtonSupport> en su lugar para mostrarlo (el usuario hace clic en el boton para mostrar Crisp—limpia la UI)
       if (
         config.crisp.onlyShowOnRoutes &&
         !config.crisp.onlyShowOnRoutes?.includes(pathname)
@@ -51,7 +52,7 @@ const CrispChat = (): null => {
     }
   }, [pathname]);
 
-  // Add User Unique ID to Crisp to easily identify users when reaching support (optional)
+  // Agregar ID unico del usuario a Crisp para identificar facilmente a los usuarios cuando contacten soporte (opcional)
   useEffect(() => {
     if (data?.user && config?.crisp?.id) {
       Crisp.session.setData({ userId: data.user?.id });
@@ -61,34 +62,34 @@ const CrispChat = (): null => {
   return null;
 };
 
-// All the client wrappers are here (they can't be in server components)
-// 1. NextTopLoader: Show a progress bar at the top when navigating between pages
-// 2. Toaster: Show Success/Error messages anywhere from the app with toast()
-// 3. Tooltip: Show tooltips if any JSX elements has these 2 attributes: data-tooltip-id="tooltip" data-tooltip-content=""
-// 4. CrispChat: Set Crisp customer chat support (see above)
+// Todos los wrappers del cliente estan aqui (no pueden estar en componentes de servidor)
+// 1. NextTopLoader: Muestra una barra de progreso arriba al navegar entre paginas
+// 2. Toaster: Muestra mensajes de Exito/Error desde cualquier parte de la app con toast()
+// 3. Tooltip: Muestra tooltips si algun elemento JSX tiene estos 2 atributos: data-tooltip-id="tooltip" data-tooltip-content=""
+// 4. CrispChat: Configura el soporte de chat al cliente con Crisp (ver arriba)
 const ClientLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      {/* Show a progress bar at the top when navigating between pages */}
+      {/* Muestra una barra de progreso arriba al navegar entre paginas */}
       <NextTopLoader color={config.colors.main} showSpinner={false} />
 
-      {/* Content inside app/page.js files  */}
+      {/* Contenido dentro de archivos app/page.js */}
       {children}
 
-      {/* Show Success/Error messages anywhere from the app with toast() */}
+      {/* Muestra mensajes de Exito/Error desde cualquier parte de la app con toast() */}
       <Toaster
         toastOptions={{
           duration: 3000,
         }}
       />
 
-      {/* Show tooltips if any JSX elements has these 2 attributes: data-tooltip-id="tooltip" data-tooltip-content="" */}
+      {/* Muestra tooltips si algun elemento JSX tiene estos 2 atributos: data-tooltip-id="tooltip" data-tooltip-content="" */}
       <Tooltip
         id="tooltip"
         className="z-[60] !opacity-100 max-w-sm shadow-lg"
       />
 
-      {/* Set Crisp customer chat support */}
+      {/* Configura el soporte de chat al cliente con Crisp */}
       <CrispChat />
     </>
   );

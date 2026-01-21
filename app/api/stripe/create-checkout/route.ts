@@ -2,27 +2,27 @@ import { createCheckout } from "@/libs/stripe";
 import { createClient } from "@/libs/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
-// This function is used to create a Stripe Checkout Session (one-time payment or subscription)
-// It's called by the <ButtonCheckout /> component
-// Users must be authenticated. It will prefill the Checkout data with their email and/or credit card (if any)
+// Esta funcion se usa para crear una Sesion de Checkout de Stripe (pago unico o suscripcion)
+// Es llamada por el componente <ButtonCheckout />
+// Los usuarios deben estar autenticados. Prerellenara los datos del Checkout con su email y/o tarjeta de credito (si tiene)
 export async function POST(req: NextRequest) {
   const body = await req.json();
 
   if (!body.priceId) {
     return NextResponse.json(
-      { error: "Price ID is required" },
+      { error: "Se requiere el ID del precio" },
       { status: 400 }
     );
   } else if (!body.successUrl || !body.cancelUrl) {
     return NextResponse.json(
-      { error: "Success and cancel URLs are required" },
+      { error: "Se requieren las URLs de exito y cancelacion" },
       { status: 400 }
     );
   } else if (!body.mode) {
     return NextResponse.json(
       {
         error:
-          "Mode is required (either 'payment' for one-time payments or 'subscription' for recurring subscription)",
+          "Se requiere el modo (ya sea 'payment' para pagos unicos o 'subscription' para suscripcion recurrente)",
       },
       { status: 400 }
     );
@@ -48,14 +48,14 @@ export async function POST(req: NextRequest) {
       mode,
       successUrl,
       cancelUrl,
-      // If user is logged in, it will pass the user ID to the Stripe Session so it can be retrieved in the webhook later
+      // Si el usuario esta logueado, pasara el ID del usuario a la Sesion de Stripe para que pueda ser recuperado en el webhook despues
       clientReferenceId: user?.id,
       user: {
         email: data?.email,
-        // If the user has already purchased, it will automatically prefill it's credit card
+        // Si el usuario ya ha comprado, prerellenara automaticamente su tarjeta de credito
         customerId: data?.customer_id,
       },
-      // If you send coupons from the frontend, you can pass it here
+      // Si envias cupones desde el frontend, puedes pasarlos aqui
       // couponId: body.couponId,
     });
 

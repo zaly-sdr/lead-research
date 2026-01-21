@@ -4,10 +4,10 @@ import React, { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import apiClient from "@/libs/api";
 
-// This component is used to collect the emails from the landing page
-// You'd use this if your product isn't ready yet or you want to collect leads
-// For instance: A popup to send a freebie, joining a waitlist, etc.
-// It calls the /api/lead/route.js route and store a Lead document in the database
+// Este componente se usa para recolectar emails desde la landing page
+// Lo usarias si tu producto aun no esta listo o quieres recolectar leads
+// Por ejemplo: Un popup para enviar un regalo, unirse a una lista de espera, etc.
+// Llama a la ruta /api/lead/route.js y almacena un documento Lead en la base de datos
 const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
   const inputRef = useRef(null);
   const [email, setEmail] = useState<string>("");
@@ -21,9 +21,9 @@ const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
     try {
       await apiClient.post("/lead", { email });
 
-      toast.success("Thanks for joining the waitlist!");
+      toast.success("Gracias por unirte a la lista de espera!");
 
-      // just remove the focus on the input
+      // simplemente quita el foco del input
       inputRef.current.blur();
       setEmail("");
       setIsDisabled(true);
@@ -44,7 +44,7 @@ const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
         value={email}
         ref={inputRef}
         autoComplete="email"
-        placeholder="tom@cruise.com"
+        placeholder="tu@email.com"
         className="input input-bordered w-full placeholder:opacity-60"
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -54,7 +54,7 @@ const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
         type="submit"
         disabled={isDisabled}
       >
-        Join waitlist
+        Unirse a la lista
         {isLoading ? (
           <span className="loading loading-spinner loading-xs"></span>
         ) : (

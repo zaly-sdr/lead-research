@@ -3,17 +3,17 @@
 import { Crisp } from "crisp-sdk-web";
 import config from "@/config";
 
-// Use this button if chat is hidden on some routes. config.js has onlyShowOnRoutes set to ["/"] so it will be hidden on all routes except the home page.
-// If Crisp is not enable, it will open the support email in the default email client.
+// Usa este boton si el chat esta oculto en algunas rutas. config.js tiene onlyShowOnRoutes configurado a ["/"] asi que estara oculto en todas las rutas excepto la pagina principal.
+// Si Crisp no esta habilitado, abrira el email de soporte en el cliente de correo predeterminado.
 const ButtonSupport = () => {
   const handleClick = () => {
     if (config.crisp?.id) {
       Crisp.chat.show();
       Crisp.chat.open();
     } else if (config.resend?.supportEmail) {
-      // open default email client in new window with "need help with ${config.appName}" as subject
+      // abre el cliente de correo predeterminado en nueva ventana con "Necesito ayuda con ${config.appName}" como asunto
       window.open(
-        `mailto:${config.resend.supportEmail}?subject=Need help with ${config.appName}`,
+        `mailto:${config.resend.supportEmail}?subject=Necesito ayuda con ${config.appName}`,
         "_blank"
       );
     }
@@ -24,8 +24,8 @@ const ButtonSupport = () => {
       className="btn btn-sm"
       onClick={handleClick}
       data-tooltip-id="tooltip"
-      data-tooltip-content="Talk to support"
-      title="Chat with support"
+      data-tooltip-content="Hablar con soporte"
+      title="Chatear con soporte"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ const ButtonSupport = () => {
           clipRule="evenodd"
         />
       </svg>
-      Support
+      Soporte
     </button>
   );
 };
