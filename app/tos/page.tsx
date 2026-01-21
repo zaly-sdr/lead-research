@@ -57,39 +57,39 @@ const TOS = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: September 26, 2023
+          {`Última modificación, Noviembre 2025
 
-Welcome to ShipFast!
+**¡Bienvenido a Zaly!**
 
-These Terms of Service ("Terms") govern your use of the ShipFast website at https://shipfa.st ("Website") and the services provided by ShipFast. By using our Website and services, you agree to these Terms.
+Estos Términos de Servicio ("Términos") rigen el uso del sitio web de Zaly en https://zaly.app ("Sitio Web") y los servicios proporcionados por Zaly. Al utilizar nuestro Sitio Web y servicios, usted acepta estos Términos.
 
-1. Description of ShipFast
+**1. Descripción de Zaly**
 
-ShipFast is a platform that offers a JavaScript code boilerplate to assist entrepreneurs in launching their startups more efficiently.
+Zaly es una plataforma de software de prospección impulsada por inteligencia artificial, diseñada para ayudar a empresas y profesionales a identificar, gestionar y conectar con clientes potenciales de manera más eficiente.
 
-2. Ownership and Usage Rights
+**2. Propiedad y Derechos de Uso**
 
-When you purchase a package from ShipFast, you gain the right to download and use the code provided for creating applications. You own the code you create but do not have the right to resell it. We offer a full refund within 7 days of purchase, as specified in our refund policy.
+Cuando adquiere un plan de Zaly, obtiene el derecho de acceder y utilizar las funcionalidades del software según el plan contratado. Los datos e informes generados a través de su uso le pertenecen, pero no tiene derecho a revender, redistribuir ni sublicenciar el software. Ofrecemos un reembolso completo dentro de los 7 días posteriores a la compra, según lo especificado en nuestra política de reembolso.
 
-3. User Data and Privacy
+**3. Datos del Usuario y Privacidad**
 
-We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://shipfa.st/privacy-policy.
+Recopilamos y almacenamos datos del usuario, incluyendo nombre, correo electrónico e información de pago, según sea necesario para proporcionar nuestros servicios. Para obtener detalles sobre cómo manejamos sus datos, consulte nuestra Política de Privacidad en https://zaly.app/privacy-policy.
 
-4. Non-Personal Data Collection
+**4. Recopilación de Datos No Personales**
 
-We use web cookies to collect non-personal data for the purpose of improving our services and user experience.
+Utilizamos cookies web para recopilar datos no personales con el fin de mejorar nuestros servicios y la experiencia del usuario.
 
-5. Governing Law
+**5. Legislación Aplicable**
 
-These Terms are governed by the laws of France.
+Estos Términos se rigen por las leyes de España.
 
-6. Updates to the Terms
+**6. Actualizaciones de los Términos**
 
-We may update these Terms from time to time. Users will be notified of any changes via email.
+Podemos actualizar estos Términos de vez en cuando. Los usuarios serán notificados de cualquier cambio por correo electrónico.
 
-For any questions or concerns regarding these Terms of Service, please contact us at marc@shipfa.st.
+Para cualquier pregunta o inquietud sobre estos Términos de Servicio, contáctenos en contacto@zaly.com.
 
-Thank you for using ShipFast!`}
+¡Gracias por usar Zaly!`}
         </pre>
       </div>
     </main>

@@ -2,28 +2,23 @@ import Link from "next/link";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
-// CHATGPT PROMPT TO GENERATE YOUR PRIVACY POLICY — replace with your own data 👇
+// Prompt para la IA, reemplaza los datos con los tuyos
 
-// 1. Go to https://chat.openai.com/
-// 2. Copy paste bellow
-// 3. Replace the data with your own (if needed)
-// 4. Paste the answer from ChatGPT directly in the <pre> tag below
+//Eres un excelente abogado.
 
-// You are an excellent lawyer.
+//Necesito tu ayuda para redactar una política de privacidad sencilla para mi sitio web. Aquí tienes el contexto:
+// - Sitio web: https://zaly.com
+// - Nombre: Zaly
+// - Descripción: Un software de prospección impulsado por inteligencia artificial para ayudar a empresas a identificar y conectar con clientes potenciales
+// - Datos de usuario recopilados: nombre, correo electrónico e información de pago
+// - Recopilación de datos no personales: cookies web
+// - Finalidad de la recopilación de datos: procesamiento de pedidos y prestación del servicio
+// - Compartición de datos: no compartimos los datos con terceros
+// - Privacidad de los niños: no recopilamos datos de menores de edad
+// - Actualizaciones de la política de privacidad: los usuarios serán notificados por correo electrónico
+// - Información de contacto: contacto@zaly.com
 
-// I need your help to write a simple privacy policy for my website. Here is some context:
-// - Website: https://shipfa.st
-// - Name: ShipFast
-// - Description: A JavaScript code boilerplate to help entrepreneurs launch their startups faster
-// - User data collected: name, email and payment information
-// - Non-personal data collection: web cookies
-// - Purpose of Data Collection: Order processing
-// - Data sharing: we do not share the data with any other parties
-// - Children's Privacy: we do not collect any data from children
-// - Updates to the Privacy Policy: users will be updated by email
-// - Contact information: marc@shipfa.st
-
-// Please write a simple privacy policy for my site. Add the current date.  Do not add or explain your reasoning. Answer:
+//Por favor, redacta una política de privacidad sencilla para mi sitio. Añade la fecha actual. No añadas ni expliques tu razonamiento. Respuesta:
 
 export const metadata = getSEOTags({
   title: `Privacy Policy | ${config.appName}`,
@@ -57,51 +52,44 @@ const PrivacyPolicy = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: 2023-08-25
+          {`Fecha de vigencia: 21 de enero de 2026
 
-Thank you for visiting ShipFast ("we," "us," or "our"). This Privacy Policy outlines how we collect, use, and protect your personal and non-personal information when you use our website located at https://shipfa.st (the "Website").
+En Zaly, accesible desde https://zaly.com, la privacidad de nuestros usuarios es una de nuestras principales prioridades. Esta Política de Privacidad describe los tipos de información que recopilamos y cómo la utilizamos.
 
-By accessing or using the Website, you agree to the terms of this Privacy Policy. If you do not agree with the practices described in this policy, please do not use the Website.
+1. Información que Recopilamos
 
-1. Information We Collect
+Recopilamos los siguientes datos personales cuando utiliza nuestros servicios:
+- Nombre
+- Correo electrónico
+- Información de pago
 
-1.1 Personal Data
+2. Recopilación de Datos No Personales
 
-We collect the following personal information from you:
+Utilizamos cookies web para mejorar su experiencia en nuestro sitio. Estas cookies recopilan información no personal sobre su navegación.
 
-Name: We collect your name to personalize your experience and communicate with you effectively.
-Email: We collect your email address to send you important information regarding your orders, updates, and communication.
-Payment Information: We collect payment details to process your orders securely. However, we do not store your payment information on our servers. Payments are processed by trusted third-party payment processors.
+3. Uso de la Información
 
-1.2 Non-Personal Data
+Utilizamos la información recopilada únicamente para los siguientes fines:
+- Procesamiento de pedidos y gestión de suscripciones
+- Prestación de nuestros servicios de prospección con inteligencia artificial
+- Comunicación relacionada con su cuenta y nuestros servicios
 
-We may use web cookies and similar technologies to collect non-personal information such as your IP address, browser type, device information, and browsing patterns. This information helps us to enhance your browsing experience, analyze trends, and improve our services.
+4. Compartición de Datos
 
-2. Purpose of Data Collection
+No compartimos sus datos personales con terceros. Su información permanece confidencial y se utiliza exclusivamente para los fines descritos en esta política.
 
-We collect and use your personal data for the sole purpose of order processing. This includes processing your orders, sending order confirmations, providing customer support, and keeping you updated about the status of your orders.
+5. Privacidad de los Niños
 
-3. Data Sharing
+Nuestros servicios no están dirigidos a menores de edad. No recopilamos conscientemente información personal de niños.
 
-We do not share your personal data with any third parties except as required for order processing (e.g., sharing your information with payment processors). We do not sell, trade, or rent your personal information to others.
+6. Actualizaciones de esta Política
 
-4. Children's Privacy
+Podemos actualizar esta Política de Privacidad ocasionalmente. Los usuarios serán notificados de cualquier cambio mediante correo electrónico.
 
-ShipFast is not intended for children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us at the email address provided below.
+7. Contacto
 
-5. Updates to the Privacy Policy
-
-We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page, and we may notify you via email about significant changes.
-
-6. Contact Information
-
-If you have any questions, concerns, or requests related to this Privacy Policy, you can contact us at:
-
-Email: marc@shipfa.st
-
-For all other inquiries, please visit our Contact Us page on the Website.
-
-By using ShipFast, you consent to the terms of this Privacy Policy.`}
+Si tiene alguna pregunta sobre esta Política de Privacidad, puede contactarnos en: contacto@zaly.com
+`}
         </pre>
       </div>
     </main>

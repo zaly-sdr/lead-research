@@ -1,19 +1,19 @@
 import { NextResponse, NextRequest } from "next/server";
 // import { createClient } from "@/libs/supabase/server";
 
-// This route is used to store the leads that are generated from the landing page.
-// The API call is initiated by <ButtonLead /> component
+// Esta ruta se usa para almacenar los leads que se generan desde la landing page.
+// La llamada a la API es iniciada por el componente <ButtonLead />
 export async function POST(req: NextRequest) {
   const body = await req.json();
 
   if (!body.email) {
-    return NextResponse.json({ error: "Email is required" }, { status: 400 });
+    return NextResponse.json({ error: "El email es requerido" }, { status: 400 });
   }
 
   try {
-    // Here you can add your own logic
-    // For instance, sending a welcome email (use the the sendEmail helper function from /libs/resend)
-    // For instance, saving the lead in the database (uncomment the code below)
+    // Aquí puedes agregar tu propia lógica
+    // Por ejemplo, enviar un email de bienvenida (usa la función helper sendEmail de /libs/resend)
+    // Por ejemplo, guardar el lead en la base de datos (descomenta el código de abajo)
 
     // const supabase = createClient();
     // await supabase.from("leads").insert({ email: body.email });

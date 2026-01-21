@@ -37,7 +37,6 @@
     "@tailwindcss/postcss": "^4.1.10",
     "@types/jest": "^29.5.14",
     "@types/mdx": "^2.0.13",
-    "@types/mongoose": "^5.11.97",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",

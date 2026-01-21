@@ -4,7 +4,7 @@ import config from "@/config";
 
 export const dynamic = "force-dynamic";
 
-// This route is called after a successful login. It exchanges the code for a session and redirects to the callback URL (see config.js).
+// Esta ruta se llama después de un login exitoso. Intercambia el código por una sesión y redirige a la URL de callback (ver config.js).
 export async function GET(req: NextRequest) {
   const requestUrl = new URL(req.url);
   const code = requestUrl.searchParams.get("code");
@@ -14,6 +14,6 @@ export async function GET(req: NextRequest) {
     await supabase.auth.exchangeCodeForSession(code);
   }
 
-  // URL to redirect to after sign in process completes
+  // URL a la que redirigir después de completar el proceso de inicio de sesión
   return NextResponse.redirect(requestUrl.origin + config.auth.callbackUrl);
 }

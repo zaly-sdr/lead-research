@@ -12,15 +12,15 @@ export async function POST(req: NextRequest) {
       data: { user },
     } = await supabase.auth.getUser();
 
-    // User who are not logged in can't make a purchase
+    // Los usuarios que no están logueados no pueden realizar una compra
     if (!user) {
       return NextResponse.json(
-        { error: "You must be logged in to view billing information." },
+        { error: "Debes iniciar sesión para ver la información de facturación." },
         { status: 401 }
       );
     } else if (!body.returnUrl) {
       return NextResponse.json(
-        { error: "Return URL is required" },
+        { error: "Se requiere la URL de retorno" },
         { status: 400 }
       );
     }
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     if (!data?.customer_id) {
       return NextResponse.json(
         {
-          error: "You don't have a billing account yet. Make a purchase first.",
+          error: "Aún no tienes una cuenta de facturación. Realiza una compra primero.",
         },
         { status: 400 }
       );

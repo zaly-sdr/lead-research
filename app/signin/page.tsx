@@ -7,8 +7,9 @@ import { Provider } from "@supabase/supabase-js";
 import toast from "react-hot-toast";
 import config from "@/config";
 
-// This a login/singup page for Supabase Auth.
-// Successfull login redirects to /api/auth/callback where the Code Exchange is processed (see app/api/auth/callback/route.js).
+
+// Esto es una página de registro/crear cuenta para usuarios de Supabase Auth.
+// El login exitoso redirige a /api/auth/callback (mira app/api/auth/callback/route.js).
 export default function Login() {
   const supabase = createClient();
   const [email, setEmail] = useState<string>("");
